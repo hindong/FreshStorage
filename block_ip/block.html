@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>IP</title>
+  </head>
+  <body>
+    <script>
+      window.onload=function(){
+      const request = new XMLHttpRequest();
+      const url = 'https://jsonip.com/';
+
+      request.open('GET', url, true);
+      request.onload = function () {
+        var text = request.responseText;
+        var information = text.split('"');
+        const ip = information[3];
+        const country = information[7];
+        if(country == "KR") {
+          alert("접속 " + ip); //대한민국 아이피
+        } else {
+          alert("차단 " + ip); //해외 아이피
+        }
+        };
+      request.send();
+      }
+    </script>
+  </body>
+</html>
